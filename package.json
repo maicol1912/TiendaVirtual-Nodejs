@@ -1,0 +1,16 @@
+{
+  "name": "tiendavirtualnode",
+  "version": "1.0.0",
+  "description": "tienda virtual con nodeJs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "maicol Arcila",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
