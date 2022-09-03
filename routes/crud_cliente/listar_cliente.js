@@ -4,13 +4,12 @@ var data = JSON.stringify({
     "database": "tiendaPOS",
     "dataSource": "Cluster0",
     "projection": {
-        "_id": 1
     }
 });
             
 var config = {
     method: 'post',
-    url: 'https://data.mongodb-api.com/app/data-lzbcy/endpoint/data/v1/action/findOne',
+    url: 'https://data.mongodb-api.com/app/data-lzbcy/endpoint/data/v1/action/find',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Request-Headers': '*',
