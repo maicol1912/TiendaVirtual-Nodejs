@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const url =`mongodb+srv://Maicol123:UH7FXQ36nMO2vwV3@cluster0.vgcrq.mongodb.net/?retryWrites=true&w=majority`;
+const { use } = require('../routes/enrutador');
+const user ="Maicol123"
+const password ="UH7FXQ36nMO2vwV3"
+const url =`mongodb+srv://${user}:${password}@cluster0.vgcrq.mongodb.net/?retryWrites=true&w=majority`;
 const conexionParams = {
     useNewUrlParser:true,
     useUnifiedTopology:true

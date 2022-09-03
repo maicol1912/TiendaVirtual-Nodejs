@@ -8,9 +8,10 @@ router.get('/inicio',(req,res)=>{
 })
 
 router.get('/conectar',(req,res)=>{
-    const coleccion = "tiendaPOS"  
+    
     const db = conexionDb.mongoose;
-    db.Collection(coleccion)
+    const col=db.Collection('tiendaPOS')
+    col.fin
 })
 
 module.exports = router;
