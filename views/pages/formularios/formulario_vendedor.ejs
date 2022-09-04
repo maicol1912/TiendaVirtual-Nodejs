@@ -1,0 +1,21 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/crear_cliente" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control"  name="nombre">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Cedula</label>
+      <input type="text" class="form-control" name="cedula" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Ventas Hechas</label>
+        <input type="text" class="form-control" name="ventasHechas" >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../../partials/footer.ejs") %>

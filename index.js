@@ -1,9 +1,13 @@
 const express = require('express')
 const app = express()
 const enrutador = require('router')
+const bodyparser = require('body-parser')
 const PORT = process.env.PORT || 9000
 const path = require('path')
 const enrutamiento = require("./routes/enrutador");
+
+app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.json())
 
 app.use("/",enrutamiento)
 app.set('view engine','ejs');

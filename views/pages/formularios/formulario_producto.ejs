@@ -1,0 +1,33 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/crear_cliente" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Referencia</label>
+      <input type="text" class="form-control"  name="referencia">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="nombre" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" name="descripcion" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Precio</label>
+        <input type="number" class="form-control" name="precio">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Stock</label>
+        <input type="number" class="form-control" name="stock">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Historial Compras</label>
+        <input type="text" name="historialCompras" class="form-control">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../../partials/footer.ejs") %>

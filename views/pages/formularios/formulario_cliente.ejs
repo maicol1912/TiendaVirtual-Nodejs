@@ -1,0 +1,35 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/crear_cliente" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Cedula</label>
+      <input type="number" class="form-control"  name="cedula">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="nombre" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telefono</label>
+        <input type="text" class="form-control" name="telefono" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Ubicacion</label>
+        <input type="number" class="form-control" name="ubicacion"  placeholder="latitud">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="longitud">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="zoom">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Total Comprado</label>
+        <input type="number" class="form-control" name="totalComprado" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Historial Compras</label>
+        <input type="text" name="historialCompras" class="form-control">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../../partials/footer.ejs") %>
