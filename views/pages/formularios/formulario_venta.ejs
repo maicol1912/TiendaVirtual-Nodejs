@@ -1,0 +1,41 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/crear_venta" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Serie</label>
+      <input type="text" class="form-control"  name="serie">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Productos Vendidos</label>
+      <input type="text" class="form-control" name="productosVendidos" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Subtotal</label>
+        <input type="number" class="form-control" name="subtotal" >
+      </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Venta</label>
+        <input type="date" class="form-control" name="fechaVenta" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Impuesto</label>
+        <input type="number" class="form-control" name="impuesto" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Total Venta</label>
+        <input type="number" class="form-control" name="impuesto" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Cliente </label>
+        <input type="text" class="form-control" name="cliente" >
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">vendedor</label>
+        <input type="text" class="form-control" name="cliente" >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../../partials/footer.ejs") %>

@@ -5,7 +5,7 @@ const clienteSchema = new schema({
     cedula :String,
     nombre : String,
     telefono: String,
-    ubicacion : Object,
+    ubicacion : Array,
     totalComprado : Number,
     historialCompras : Array
 })
