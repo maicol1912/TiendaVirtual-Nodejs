@@ -1,0 +1,63 @@
+<%- include("../../partials/head.ejs") %>
+
+    <br>
+    <a href="/crear_cliente" class="btn btn-primary">Agregar Cliente</a>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Ubicacion</th>
+                <th scope="col">total Comprado</th>
+                <th scope="col">Historial Compras</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <% clientes.forEach((cliente)=>{ %>
+                    <tr>
+                    <td><%=cliente._id %></td>
+                    <td><%=cliente.cedula %></td>
+                    <td><%=cliente.nombre %></td>
+                    <td><%=cliente.telefono %></td>
+                    <td>
+                        <% cliente.ubicacion.forEach((ubi)=>{ %>
+                            <label><%= ubi %></label>
+                        <% }) %>
+                    </td>
+                    <td><%=cliente.totalComprado %></td>
+                    <td>
+                        <% cliente.historialCompras.forEach((compra)=>{ %>
+                            <label><%= compra %></label>
+                        <% }) %>
+                    </td>
+                    <td>
+                        <button onclick="buscarDato()" data-id="<%=cliente._id %>" class="update btn btn-warning">Editar</button>
+                    </td>
+                </tr>
+                <% }) %>
+            
+        </tbody>
+    </table>
+
+    <script>
+    
+        async function buscarDato(){
+        const buttonUpdate = document.querySelector(".update")
+        const idButton = buttonUpdate.dataset.id;
+        try {
+            location.href = `/editar_cliente/${idButton}`
+        } catch (error) {
+          console.log("error: "+error)  
+        }
+        }
+    </script>
+    
+    <%- include("../../partials/footer.ejs") %>
+
+<%- include("../../partials/footer.ejs") %>

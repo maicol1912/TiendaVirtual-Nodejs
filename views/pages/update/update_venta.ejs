@@ -1,0 +1,40 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/editar_venta" method="post">
+    
+    <div class="mb-3">
+      <label for="" class="form-label">Serie</label>
+      <input type="text" class="form-control"  name="serie" value="<%=venta.serie%>">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Productos Vendidos</label>
+      <input type="text" class="form-control" name="productosVendidos" value="<%=venta.productosVendidos%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Subtotal</label>
+        <input type="number" class="form-control" name="subtotal" value="<%=venta.subtotal%>">
+      </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Venta</label>
+        <input type="datetime-local" class="form-control" name="fechaVenta" value="<%=venta.fechaVenta%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Impuesto</label>
+        <input type="number" class="form-control" name="impuesto" value="<%=venta.impuesto%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Total Venta</label>
+        <input type="number" class="form-control" name="totalVenta" value="<%=venta.totalVenta%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Cliente </label>
+        <input type="text" class="form-control" name="cliente" value="<%=venta.cliente%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">vendedor</label>
+        <input type="text" class="form-control" name="vendedor" value="<%=venta.vendedor%>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <%- include("../../partials/footer.ejs") %>

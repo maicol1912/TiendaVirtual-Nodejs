@@ -1,0 +1,29 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/editar_producto" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Referencia</label>
+      <input type="text" class="form-control"  name="referencia" value="<%=producto.referencia%>">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="nombre" value="<%=producto.nombre%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Descripcion</label>
+        <input type="text" class="form-control" name="descripcion" value="<%=producto.descripcion%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Precio</label>
+        <input type="number" class="form-control" name="precio" value="<%=producto.precio%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Stock</label>
+        <input type="number" class="form-control" name="stock" value="<%=producto.stock%>">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("../../partials/footer.ejs") %>

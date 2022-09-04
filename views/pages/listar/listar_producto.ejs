@@ -1,0 +1,54 @@
+<%- include("../../partials/head.ejs") %>
+
+<br>
+<a href="/crear_producto" class="btn btn-primary">Crear Producto</a>
+<br>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Referencia</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <% productos.forEach((producto)=>{ %>
+                <tr>
+                <td><%=producto._id %></td>
+                <td><%=producto.referencia %></td>
+                <td><%=producto.nombre %></td>
+                <td><%=producto.descripcion %></td>
+                <td><%=producto.precio %></td>
+                <td><%=producto.stock %></td>
+                <td>
+                    <button onclick="buscarDato()" data-id="<%=producto._id %>" class="update btn btn-warning">Editar</button>
+                </td>
+                
+            </tr>
+            <% }) %>
+        
+    </tbody>
+</table>
+<script>
+    
+    async function buscarDato(){
+    const buttonUpdate = document.querySelector(".update")
+    const idButton = buttonUpdate.dataset.id;
+    try {
+        location.href = `/editar_producto/${idButton}`
+    } catch (error) {
+      console.log("error: "+error)  
+    }
+    }
+</script>
+
+
+    <%- include("../../partials/footer.ejs") %>
+
+<%- include("../../partials/footer.ejs") %>

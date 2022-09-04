@@ -1,0 +1,53 @@
+<%- include("../../partials/head.ejs") %>
+
+<br>
+<a href="/crear_vendedor" class="btn btn-primary">Agregar Vendedor</a>
+<br>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ventas Realizadas</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <% vendedores.forEach((vendedor)=>{ %>
+                <tr>
+                <td><%=vendedor._id %></td>
+                <td><%=vendedor.cedula %></td>
+                <td><%=vendedor.nombre %></td>
+                <td>
+                    <% vendedor.ventasHechas.forEach((venta)=>{ %>
+                        <label><%= venta %></label>
+                    <% }) %>
+                </td>
+                <td>
+                    <button onclick="buscarDato()" data-id="<%=vendedor._id %>" class="update btn btn-warning">Editar</button>
+                </td>
+            </tr>
+            <% }) %>
+        
+    </tbody>
+</table>
+
+<script>
+    
+    async function buscarDato(){
+    const buttonUpdate = document.querySelector(".update")
+    const idButton = buttonUpdate.dataset.id;
+    try {
+        location.href = `/editar_vendedor/${idButton}`
+    } catch (error) {
+      console.log("error: "+error)  
+    }
+    }
+</script>
+
+    <%- include("../../partials/footer.ejs") %>
+
+<%- include("../../partials/footer.ejs") %>

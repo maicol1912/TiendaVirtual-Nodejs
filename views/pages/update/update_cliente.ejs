@@ -1,0 +1,35 @@
+<%- include("../../partials/head.ejs") %>
+<form action="/editar_cliente" method="post">
+    <div class="mb-3">
+      <label for="" class="form-label">Cedula</label>
+      <input type="number" class="form-control"  name="cedula" value="<%=cliente.cedula%>">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="nombre" value="<%=cliente.nombre%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Telefono</label>
+        <input type="text" class="form-control" name="telefono" value="<%=cliente.telefono%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Ubicacion</label>
+        <% cliente.ubicacion.forEach((ubi)=>{ %>
+        <input type="number" class="form-control" name="ubicacion"  placeholder="latitud" value="<%=ubi[0]%>">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="longitud" value="<%=ubi[1]%>">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="zoom" value="<%=ubi[2]%>">
+    <%}) %>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Total Comprado</label>
+        <input type="number" class="form-control" name="totalComprado" value="<%=cliente.totalComprado%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Historial Compras</label>
+        <input type="text"  class="form-control"  name="historialCompras" value="<%=cliente.historialCompras%>">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<%- include("../../partials/footer.ejs") %>
