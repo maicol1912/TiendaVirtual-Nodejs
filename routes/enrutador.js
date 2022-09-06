@@ -5,6 +5,8 @@ const vendedor = require('./Models/vendedorModel');
 const cliente = require ('./Models/clienteModel.js');
 const producto = require('./Models/productoModel');
 const venta = require('./Models/ventaModel');
+const { findByIdAndUpdate } = require('./Models/clienteModel');
+
 
 
 
@@ -24,7 +26,9 @@ router.post("/crear_cliente",async (req,res)=>{
         const cedula = body.cedula;
         const nombre = body.nombre;
         const telefono = body.telefono;
-        const ubicacion = Array(body.ubicacion);
+        const ubicacion = {latitud:body.latitud,
+                           longitud:body.longitud,
+                           zoom: body.zoom};
         const totalComprado = parseInt(body.totalComprado);
         const historialCompras = Array(body.historialCompras);
         const clientedb = new cliente({cedula:cedula,
@@ -34,6 +38,7 @@ router.post("/crear_cliente",async (req,res)=>{
                                        totalComprado:totalComprado,
                                        historialCompras:historialCompras
                                     });
+        console.log(clientedb.ubicacion)
         await clientedb.save()
         res.redirect("/listar_cliente");
 });
@@ -46,28 +51,37 @@ router.get("/editar_cliente/:id",async(req,res)=>{
     const id = req.params.id
     const clienteEditar = await cliente.find({_id : id})
     const clienteObjeto = clienteEditar[0];
-    console.log(clienteObjeto.ubicacion[0])
+    console.log(clienteObjeto)
    res.render("pages/update/update_cliente",{cliente :clienteObjeto})
    
 })
 router.post("/editar_cliente",async (req,res)=>{
+    console.log(req.body)
     const body = req.body;
+    const id = req.params.id;
     const cedula = body.cedula;
     const nombre = body.nombre;
     const telefono = body.telefono;
     const ubicacion = body.ubicacion;
     const totalComprado = body.totalComprado;
     const historialCompras = body.historialCompras;
-    const clientedb = new cliente({cedula:cedula,
-                                   nombre:nombre,
-                                   telefono:telefono,
-                                   ubicacion:ubicacion,
-                                   totalComprado:totalComprado,
-                                   historialCompras:historialCompras
-                                });
-    await clientedb.save()
+    await cliente.findByIdAndUpdate(id,{cedula:cedula,
+                                  nombre:nombre,
+                                  telefono:telefono,
+                                  ubicacion:ubicacion,
+                                  totalComprado:totalComprado,
+                                  historialCompras:historialCompras})
     res.redirect("/listar_cliente");
 });
+router.get("/eliminar_cliente/:id",async(req,res)=>{
+    const id = req.params.id
+    console.log(id)
+    await cliente.findByIdAndDelete({_id : id})
+    console.log("eliminado con exito");
+   res.redirect("/listar_cliente")
+   
+})
+
 //PARA LA COLECCION PRODUCTOS
 router.get("/crear_producto",(req,res)=>{
     res.render("pages/formularios/formulario_producto")
@@ -122,6 +136,14 @@ router.post("/editar_producto",async (req,res)=>{
     res.redirect("/listar_producto");
 
 });
+router.get("/eliminar_producto/:id",async(req,res)=>{
+    const id = req.params.id
+    console.log(id)
+    await producto.findByIdAndDelete({_id : id})
+    console.log("eliminado con exito");
+   res.redirect("/listar_producto")
+   
+})
 
 //PARA LA COLECCION VENDEDORES
 router.get("/crear_vendedor",(req,res)=>{
@@ -149,6 +171,7 @@ router.get("/editar_vendedor/:id",async(req,res)=>{
     const id = req.params.id
     const vendedorEditar = await vendedor.find({_id : id})
     const vendedorObjeto = vendedorEditar[0];
+    console.log(vendedorObjeto)
    res.render("pages/update/update_vendedor",{vendedor :vendedorObjeto})
    
 })
@@ -164,7 +187,14 @@ router.post("/editar_vendedor",async (req,res)=>{
     console.log(nombre);
     res.redirect("/listar_vendedor");
 });
-
+router.get("/eliminar_vendedor/:id",async(req,res)=>{
+    const id = req.params.id
+    console.log(id)
+    await vendedor.findByIdAndDelete({_id : id})
+    console.log("eliminado con exito");
+   res.redirect("/listar_vendedor")
+   
+})
 //PARA LA COLECCION VENTAS
 router.get("/crear_venta",(req,res)=>{
     res.render("pages/formularios/formulario_venta")
@@ -212,7 +242,8 @@ router.get("/editar_venta/:id",async(req,res)=>{
     
 })
 router.post("/editar_venta",async(req,res)=>{
-    const body = req.body;
+        const body = req.body;
+        const id = req.params.id;
         const serie = body.serie;
         const productosVendidos = body.productosVendidos;
         const subtotal = body.subtotal;
@@ -222,30 +253,18 @@ router.post("/editar_venta",async(req,res)=>{
         const cliente = body.cliente;
         const vendedor = body.vendedor;
 
-        const ventadb = new venta({
-                                serie : serie,
-                                productosVendidos : productosVendidos,
-                                subtotal : subtotal,
-                                fechaVenta : fechaVenta,
-                                impuesto : impuesto,
-                                totalVenta : totalVenta,
-                                cliente : cliente,
-                                vendedor : vendedor
-        });
         await ventadb.save()
         console.log(venta);
         res.redirect("/listar_venta");
     
 })
-/*router.get("/eliminar_venta/:id",async(req,res)=>{
+router.get("/eliminar_venta/:id",async(req,res)=>{
     const id = req.params.id
-    try {
-        const eliminarVenta = await venta.findByIdAndDelete({_id:id})
-    } catch (error) {
-        console.log(error)
-    }
-    res.redirect("/listar/venta")
-    
-})*/
+    console.log(id)
+    await venta.findByIdAndDelete({_id : id})
+    console.log("eliminado con exito");
+   res.redirect("/listar_venta")
+   
+})
 module.exports = router;
                  

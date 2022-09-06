@@ -37,24 +37,13 @@
                 <td><%=venta.cliente %></td>
                 <td><%=venta.vendedor %></td>
                 <td>
-                    <button onclick="buscarDato()" data-id="<%=venta.id %>" class="update btn btn-warning">Editar</button>
+                    <a href="/editar_venta/<%=venta._id%>" class="update btn btn-warning">Editar</a>
                 </td>
             </tr>
             <% }) %>
         
     </tbody>
 </table>
-<script>
-    
-    async function buscarDato(){
-    const buttonUpdate = document.querySelector(".update")
-    const idButton = buttonUpdate.dataset.id;
-    try {
-        location.href = `/editar_venta/${idButton}`
-    } catch (error) {
-      console.log("error: "+error)  
-    }
-    }
-</script>
+
 
     <%- include("../../partials/footer.ejs") %>

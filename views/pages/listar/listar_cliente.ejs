@@ -26,9 +26,9 @@
                     <td><%=cliente.nombre %></td>
                     <td><%=cliente.telefono %></td>
                     <td>
-                        <% cliente.ubicacion.forEach((ubi)=>{ %>
-                            <label><%= ubi %></label>
-                        <% }) %>
+                        <label><%=cliente.ubicacion.latitud %></label>,
+                        <label><%=cliente.ubicacion.longitud %></label>,
+                        <label><%=cliente.ubicacion.zoom %></label>
                     </td>
                     <td><%=cliente.totalComprado %></td>
                     <td>
@@ -37,7 +37,7 @@
                         <% }) %>
                     </td>
                     <td>
-                        <button onclick="buscarDato()" data-id="<%=cliente._id %>" class="update btn btn-warning">Editar</button>
+                        <a href="/editar_cliente/<%=cliente._id%>" class="update btn btn-warning">Editar</a>
                     </td>
                 </tr>
                 <% }) %>
@@ -45,18 +45,6 @@
         </tbody>
     </table>
 
-    <script>
-    
-        async function buscarDato(){
-        const buttonUpdate = document.querySelector(".update")
-        const idButton = buttonUpdate.dataset.id;
-        try {
-            location.href = `/editar_cliente/${idButton}`
-        } catch (error) {
-          console.log("error: "+error)  
-        }
-        }
-    </script>
     
     <%- include("../../partials/footer.ejs") %>
 

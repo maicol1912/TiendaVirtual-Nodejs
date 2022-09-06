@@ -1,5 +1,6 @@
 <%- include("../../partials/head.ejs") %>
-<form action="/editar_cliente" method="post">
+<form action="/editar_cliente/<%cliente.id%>?_method=PUT" method="post">
+    <input type="hidden" name="_method" value="PUT">
     <div class="mb-3">
       <label for="" class="form-label">Cedula</label>
       <input type="number" class="form-control"  name="cedula" value="<%=cliente.cedula%>">
@@ -15,11 +16,11 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Ubicacion</label>
-        <% cliente.ubicacion.forEach((ubi)=>{ %>
-        <input type="number" class="form-control" name="ubicacion"  placeholder="latitud" value="<%=ubi[0]%>">
-        <input type="number" class="form-control" name="ubicacion"  placeholder="longitud" value="<%=ubi[1]%>">
-        <input type="number" class="form-control" name="ubicacion"  placeholder="zoom" value="<%=ubi[2]%>">
-    <%}) %>
+        
+        <input type="number" class="form-control" name="ubicacion"  placeholder="latitud" value="<%=cliente.ubicacion.latitud%>">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="longitud" value="<%=cliente.ubicacion.longitud%>">
+        <input type="number" class="form-control" name="ubicacion"  placeholder="zoom" value="<%=cliente.ubicacion.zoom%>">
+    
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Total Comprado</label>
@@ -32,4 +33,6 @@
     
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br>
+    <a href="/eliminar_cliente/<%=cliente._id%>" class="btn btn-warning">Eliminar</a>
 <%- include("../../partials/footer.ejs") %>
