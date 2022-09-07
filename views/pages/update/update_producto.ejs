@@ -1,6 +1,7 @@
 <%- include("../../partials/head.ejs") %>
 
 <form action="/editar_producto" method="post">
+    <input type="hidden" name="id" value="<%=producto._id%>">
     <div class="mb-3">
       <label for="" class="form-label">Referencia</label>
       <input type="text" class="form-control"  name="referencia" value="<%=producto.referencia%>">

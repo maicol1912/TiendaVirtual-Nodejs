@@ -1,6 +1,7 @@
 <%- include("../../partials/head.ejs") %>
 
 <form action="/editar_vendedor" method="post">
+  <input type="hidden" name="id" value="<%=vendedor._id%>">
     <div class="mb-3">
       <label for="" class="form-label">Nombre</label>
       <input type="text" class="form-control"  name="nombre" value="<%=vendedor.nombre%>">

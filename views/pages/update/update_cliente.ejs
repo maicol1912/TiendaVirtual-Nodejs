@@ -1,6 +1,6 @@
 <%- include("../../partials/head.ejs") %>
-<form action="/editar_cliente/<%cliente.id%>?_method=PUT" method="post">
-    <input type="hidden" name="_method" value="PUT">
+<form action="/editar_cliente/<%cliente.id%>" method="post">
+    <input type="hidden" name="id" value="<%=cliente._id%>">
     <div class="mb-3">
       <label for="" class="form-label">Cedula</label>
       <input type="number" class="form-control"  name="cedula" value="<%=cliente.cedula%>">
@@ -17,9 +17,9 @@
     <div class="mb-3">
         <label for="" class="form-label">Ubicacion</label>
         
-        <input type="number" class="form-control" name="ubicacion"  placeholder="latitud" value="<%=cliente.ubicacion.latitud%>">
-        <input type="number" class="form-control" name="ubicacion"  placeholder="longitud" value="<%=cliente.ubicacion.longitud%>">
-        <input type="number" class="form-control" name="ubicacion"  placeholder="zoom" value="<%=cliente.ubicacion.zoom%>">
+        <input type="number" class="form-control" name="latitud"  placeholder="latitud" value="<%=cliente.ubicacion.latitud%>">
+        <input type="number" class="form-control" name="longitud"  placeholder="longitud" value="<%=cliente.ubicacion.longitud%>">
+        <input type="number" class="form-control" name="zoom"  placeholder="zoom" value="<%=cliente.ubicacion.zoom%>">
     
     </div>
     <div class="mb-3">

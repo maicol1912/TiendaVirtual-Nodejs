@@ -5,11 +5,6 @@ const vendedor = require('./Models/vendedorModel');
 const cliente = require ('./Models/clienteModel.js');
 const producto = require('./Models/productoModel');
 const venta = require('./Models/ventaModel');
-const { findByIdAndUpdate } = require('./Models/clienteModel');
-
-
-
-
 
 router.get('/inicio',(req,res)=>{
     res.send("SOY UN INICIO ENRUTADO");
@@ -56,21 +51,26 @@ router.get("/editar_cliente/:id",async(req,res)=>{
    
 })
 router.post("/editar_cliente",async (req,res)=>{
-    console.log(req.body)
     const body = req.body;
-    const id = req.params.id;
+    const id = body.id
     const cedula = body.cedula;
     const nombre = body.nombre;
     const telefono = body.telefono;
-    const ubicacion = body.ubicacion;
+    const ubicacion = {latitud:body.latitud,
+                       longitud:body.longitud,
+                       zoom:body.zoom}
     const totalComprado = body.totalComprado;
     const historialCompras = body.historialCompras;
-    await cliente.findByIdAndUpdate(id,{cedula:cedula,
-                                  nombre:nombre,
-                                  telefono:telefono,
-                                  ubicacion:ubicacion,
-                                  totalComprado:totalComprado,
-                                  historialCompras:historialCompras})
+    console.log(id)
+    const clienteNuevo = {_id:id,
+        cedula:cedula,
+        nombre:nombre,
+        telefono:telefono,
+        ubicacion:ubicacion,
+        totalComprado:totalComprado,
+        historialCompras:historialCompras}
+    
+    await cliente.updateOne({_id:id},{$set:clienteNuevo})
     res.redirect("/listar_cliente");
 });
 router.get("/eliminar_cliente/:id",async(req,res)=>{
@@ -120,19 +120,20 @@ router.get("/editar_producto/:id",async(req,res)=>{
 })
 router.post("/editar_producto",async (req,res)=>{
     const body = req.body;
+    const id = body.id;
     const referencia = body.referencia;
     const nombre = body.nombre;
     const descripcion = body.descripcion;
     const precio = body.precio;
     const stock = body.stock;
-    const productodb = new producto({referencia: referencia,
-                                    nombre:nombre,
-                                    descripcion:descripcion,
-                                    precio:precio,
-                                    stock:stock
-                                });
-    await productodb.save()
-    console.log(productodb);
+    const productoNuevo = { _id:id,
+                            referencia: referencia,
+                            nombre:nombre,
+                            descripcion:descripcion,
+                            precio:precio,
+                            stock:stock
+                                };
+    await producto.updateOne({_id:id},{$set:productoNuevo})
     res.redirect("/listar_producto");
 
 });
@@ -177,14 +178,15 @@ router.get("/editar_vendedor/:id",async(req,res)=>{
 })
 router.post("/editar_vendedor",async (req,res)=>{
     const body = req.body;
+    const id = body.id;
     const nombre = body.nombre;
     const cedula = body.cedula;
     const ventasHechas = body.ventasHechas;
-    const vendedordb = new vendedor({nombre:nombre,
+    const vendedorNuevo ={_id:id,
+                                     nombre:nombre,
                                      cedula:cedula,
-                                     ventasHechas:ventasHechas});
-    await vendedordb.save()
-    console.log(nombre);
+                                     ventasHechas:ventasHechas};
+    await vendedor.updateOne({_id:id},{$set:vendedorNuevo})
     res.redirect("/listar_vendedor");
 });
 router.get("/eliminar_vendedor/:id",async(req,res)=>{
@@ -243,19 +245,26 @@ router.get("/editar_venta/:id",async(req,res)=>{
 })
 router.post("/editar_venta",async(req,res)=>{
         const body = req.body;
-        const id = req.params.id;
+        const id = body.id;
         const serie = body.serie;
         const productosVendidos = body.productosVendidos;
         const subtotal = body.subtotal;
-        const fechaVenta = Date.parse(body.fechaVenta);
+        const fechaVenta = body.fechaVenta;
         const impuesto = body.impuesto;
         const totalVenta = body.totalVenta;
         const cliente = body.cliente;
         const vendedor = body.vendedor;
-
-        await ventadb.save()
-        console.log(venta);
-        res.redirect("/listar_venta");
+        const ventaNueva = {_id:id,
+                            serie:serie,
+                            productosVendidos:productosVendidos,
+                            subtotal:subtotal,
+                            fechaVenta:fechaVenta,
+                            impuesto:impuesto,
+                            totalVenta:totalVenta,
+                            cliente:cliente,
+                            vendedor:vendedor}
+    await venta.updateOne({_id:id},{$set:ventaNueva})
+    res.redirect("/listar_venta");
     
 })
 router.get("/eliminar_venta/:id",async(req,res)=>{
