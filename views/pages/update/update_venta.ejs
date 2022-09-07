@@ -1,6 +1,6 @@
 <%- include("../../partials/head.ejs") %>
 
-<form action="/editar_venta" method="post">
+<form action="/venta/editar" method="post">
     <input type="hidden" name="id" value="<%=venta._id%>">
     <div class="mb-3">
       <label for="" class="form-label">Serie</label>
@@ -37,6 +37,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<a href="/eliminar_venta/<%=venta._id%>" class="btn btn-warning">Eliminar</a>
+<a href="/venta/eliminar/<%=venta._id%>" class="btn btn-danger">Eliminar</a>
 
 <%- include("../../partials/footer.ejs") %>

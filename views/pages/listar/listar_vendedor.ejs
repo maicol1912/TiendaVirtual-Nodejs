@@ -1,7 +1,7 @@
 <%- include("../../partials/head.ejs") %>
 
 <br>
-<a href="/crear_vendedor" class="btn btn-primary">Agregar Vendedor</a>
+<a href="/vendedor/crear" class="btn btn-primary">Agregar Vendedor</a>
 <br>
 <br>
 <table class="table table-striped">
@@ -27,7 +27,7 @@
                     <% }) %>
                 </td>
                 <td>
-                    <a href="/editar_vendedor/<%=vendedor._id%>" class="update btn btn-warning">Editar</a>
+                    <a href="/vendedor/editar/<%=vendedor._id%>" class="update btn btn-warning">Editar</a>
                 </td>
             </tr>
             <% }) %>

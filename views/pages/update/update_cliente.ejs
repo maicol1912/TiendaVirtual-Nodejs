@@ -1,5 +1,5 @@
 <%- include("../../partials/head.ejs") %>
-<form action="/editar_cliente/<%cliente.id%>" method="post">
+<form action="/cliente/editar/<%cliente.id%>" method="post">
     <input type="hidden" name="id" value="<%=cliente._id%>">
     <div class="mb-3">
       <label for="" class="form-label">Cedula</label>
@@ -34,5 +34,5 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <br>
-    <a href="/eliminar_cliente/<%=cliente._id%>" class="btn btn-warning">Eliminar</a>
+    <a href="/cliente/eliminar/<%=cliente._id%>" class="btn btn-danger">Eliminar</a>
 <%- include("../../partials/footer.ejs") %>

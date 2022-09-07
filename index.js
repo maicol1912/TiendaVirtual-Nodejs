@@ -4,12 +4,20 @@ const enrutador = require('router')
 const bodyparser = require('body-parser')
 const PORT = process.env.PORT || 9000
 const path = require('path')
-const enrutamiento = require("./routes/enrutador");
+const enrutadorProducto = require("./routes/enrutadores/enrutadorProducto");
+const enrutadorVendedor = require("./routes/enrutadores/enrutadorVendedor");
+const enrutadorVenta = require("./routes/enrutadores/enrutadorVenta");
+const enrutadorCliente = require("./routes/enrutadores/enrutadorCliente");
+
 
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
 
-app.use("/",enrutamiento)
+app.use("/cliente",enrutadorCliente);
+app.use("/producto",enrutadorProducto);
+app.use("/vendedor",enrutadorVendedor);
+app.use("/venta",enrutadorVenta)
+
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'))
 app.use(express.static("./public"))
@@ -17,8 +25,11 @@ app.use(express.static("./public"))
 
 app.get("/",(req,res,next)=>{
     res.send("hola soy el index")
-    next(enrutamiento);
 })
+app.get("/cliente",enrutadorCliente);
+app.get("/producto",enrutadorProducto);
+app.get("/vendedor",enrutadorVendedor);
+app.get("/venta",enrutadorVenta);
 
 app.listen(PORT,()=>{
     console.log("servidor Corriendo en el puerto: "+PORT)
