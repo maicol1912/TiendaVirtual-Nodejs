@@ -4,7 +4,6 @@ const conexionDb = require('../../config/conexion');
 const cliente = require ('../Models/clienteModel.js');
 
 
-
 router.get("/crear",(req,res)=>{
     res.render("pages/formularios/formulario_cliente")
 })
