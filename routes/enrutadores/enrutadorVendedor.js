@@ -7,7 +7,7 @@ router.get("/crear",(req,res)=>{
     res.render("pages/formularios/formulario_vendedor")
 })
 
-router.post("/crear",async (req,res)=>{
+router.post("/crear",async (req,res,next)=>{
         const body = req.body;
         const nombre = body.nombre;
         const cedula = body.cedula;
@@ -17,7 +17,7 @@ router.post("/crear",async (req,res)=>{
                                          ventasHechas:ventasHechas});
         await vendedordb.save()
 
-        res.redirect("/vendedor/listar");
+        next(res.redirect("/vendedor/listar"));
 });
 router.get("/listar",async(req,res)=>{
     const obtenerVendedor = await vendedor.find()
@@ -32,7 +32,7 @@ router.get("/editar/:id",async(req,res)=>{
    res.render("pages/update/update_vendedor",{vendedor :vendedorObjeto})
    
 })
-router.post("/editar",async (req,res)=>{
+router.post("/editar",async (req,res,next)=>{
     const body = req.body;
     const id = body.id;
     const nombre = body.nombre;
@@ -43,14 +43,14 @@ router.post("/editar",async (req,res)=>{
                                      cedula:cedula,
                                      ventasHechas:ventasHechas};
     await vendedor.updateOne({_id:id},{$set:vendedorNuevo})
-    res.redirect("/vendedor/listar");
+    next(res.redirect("/vendedor/listar"));
 });
-router.get("/eliminar/:id",async(req,res)=>{
+router.get("/eliminar/:id",async(req,res,next)=>{
     const id = req.params.id
  
     await vendedor.findByIdAndDelete({_id : id})
 
-   res.redirect("/vendedor/listar")
+   next(res.redirect("/vendedor/listar"));
    
 })
 

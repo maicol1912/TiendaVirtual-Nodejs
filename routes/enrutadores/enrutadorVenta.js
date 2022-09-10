@@ -7,7 +7,7 @@ router.get("/crear",(req,res)=>{
     res.render("pages/formularios/formulario_venta")
 })
 
-router.post("/crear",async (req,res)=>{
+router.post("/crear",async (req,res,next)=>{
         const body = req.body;
         const serie = body.serie;
         const productosVendidos = body.productosVendidos;
@@ -30,9 +30,7 @@ router.post("/crear",async (req,res)=>{
         });
         await ventadb.save()
   
-        res.redirect("/venta/listar");
-
-    
+        next(res.redirect("/venta/listar"));
 });
 
 router.get("/listar",async(req,res)=>{
@@ -48,13 +46,13 @@ router.get("/editar/:id",async(req,res)=>{
     res.render("pages/update/update_venta",{venta :ventaObjeto})
     
 })
-router.post("/editar",async(req,res)=>{
+router.post("/editar",async(req,res,next)=>{
         const body = req.body;
         const id = body.id;
         const serie = body.serie;
         const productosVendidos = body.productosVendidos;
         const subtotal = body.subtotal;
-        const fechaVenta = body.fechaVenta;
+        const fechaVenta = Date(body.fechaVenta);
         const impuesto = body.impuesto;
         const totalVenta = body.totalVenta;
         const cliente = body.cliente;
@@ -69,15 +67,15 @@ router.post("/editar",async(req,res)=>{
                             cliente:cliente,
                             vendedor:vendedor};
     await venta.updateOne({_id:id},{$set:ventaNueva})
-    res.redirect("/venta/listar");
+    next(res.redirect("/venta/listar"));
     
 })
-router.get("/eliminar/:id",async(req,res)=>{
+router.get("/eliminar/:id",async(req,res,next)=>{
     const id = req.params.id
  
     await venta.findByIdAndDelete({_id : id})
 
-    res.redirect("/venta/listar")
+    next(res.redirect("/venta/listar"));
    
 })
 module.exports = router;

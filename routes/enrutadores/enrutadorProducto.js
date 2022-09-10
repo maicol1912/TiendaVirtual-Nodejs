@@ -7,7 +7,7 @@ router.get("/crear",(req,res)=>{
     res.render("pages/formularios/formulario_producto")
 })
 
-router.post("/crear",async (req,res)=>{
+router.post("/crear",async (req,res,next)=>{
         const body = req.body;
         const referencia = body.referencia;
         const nombre = body.nombre;
@@ -22,7 +22,7 @@ router.post("/crear",async (req,res)=>{
                                     });
         await productodb.save()
         console.log(productodb);
-        res.redirect("producto/listar");
+        next(res.redirect("producto/listar"));
    
 });
 
@@ -38,7 +38,7 @@ router.get("/editar/:id",async(req,res)=>{
    res.render("pages/update/update_producto",{producto :productoObjeto})
    
 })
-router.post("/editar",async (req,res)=>{
+router.post("/editar",async (req,res,next)=>{
     const body = req.body;
     const id = body.id;
     const referencia = body.referencia;
@@ -54,15 +54,15 @@ router.post("/editar",async (req,res)=>{
                             stock:stock
                                 };
     await producto.updateOne({_id:id},{$set:productoNuevo})
-    res.redirect("/producto/listar");
+    next(res.redirect("/producto/listar"));
 
 });
-router.get("/eliminar/:id",async(req,res)=>{
+router.get("/eliminar/:id",async(req,res,next)=>{
     const id = req.params.id
 
     await producto.findByIdAndDelete({_id : id})
 
-   res.redirect("/producto/listar")
+   next(res.redirect("/producto/listar"));
    
 })
 

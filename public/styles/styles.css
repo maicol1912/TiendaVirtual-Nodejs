@@ -7,3 +7,254 @@ h1{
 img{
     margin-left: 25rem;
 }
+form{
+    width: 50rem;
+    margin-left: 28rem;
+    margin-top: 3rem;
+}
+.eliminar{
+    margin-left: 33rem;
+    margin-top: -4rem;
+
+}
+body{
+    width: 98vw;
+}
+#div-input-id{
+    top: 10px;
+    left: 23vw;
+
+}
+#input-id{
+    width: 30vw;
+}
+#input-button{
+    margin-left: 30px;
+}
+#contenedores{
+    display: inline-block;
+    margin-right:10px;
+    margin-left:40px ;
+    margin-top: 30px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 18rem;
+}
+#div-principal{
+ display: inline-block;
+}
+#button-buscar{
+    background-color: aqua;
+    border-color: aqua;
+    width: 8vw;
+    height: 6vh;
+}
+#agregar-carrito{
+    background-color: rgb(0, 152, 253);
+    border-color: rgb(0, 152, 253);
+    margin-left: 40px;
+}
+#image{
+    width: 160px;
+    height: 160px;
+    margin-top: 10px;
+    margin-left: 55px;
+}
+#button-listar{
+    background-color: brown;
+    border-color: brown;
+    width: 8vw;
+    height: 6vh;
+}
+.button{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#div-principal{
+padding-left: 130px;
+padding-top: 40px;
+}
+.div-title{
+    margin-left: 18%;
+    padding-left:20%;
+    width: 60%;
+}
+.div-producto{
+margin-left:18%;
+width: 450px;
+margin-top: 25px;
+box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+display: inline-block;
+}
+.div-precio{
+    margin-left:30px;
+    display: inline-block;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+    width: 170px;
+}
+.div-cantidad{
+    margin-left:30px;
+    display: inline-block;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+    width: 322px;
+}
+.image-carrito{
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.contenedor-item{
+    display: inline-block;
+    width: 61.5%;
+    margin-left:18%;
+    height: 130px;
+    padding-top: 0px;
+    margin-top: 10px;
+}
+.div-precio-tamaño{
+    display: inline-block;
+    height: 30px;
+    width: 20px;
+    margin-left: 70px;
+    margin-top: 20px;
+
+}
+.button-div{
+    display: inline-block;
+}
+.div-input{
+    display: inline-block;
+    margin-top: 10px;
+}
+.div-image{
+    display: inline-block;
+    margin-left: 20px;
+
+}
+.contenedor-item{
+    display: inline-block;
+    width: 1100px;
+    margin-left: 270px;
+}
+.div-input-eliminar{
+    display: inline-block;
+    margin-left: 200px;
+}
+.div-title-tamaño-2{
+    display: inline-block;
+    margin-top: 0px;
+    width:295px;
+    height: 70px;
+}
+.button-eliminar{
+    border-color: rgb(255, 0, 0);
+    background-color:rgb(255, 0, 0) ;
+    margin-left: 140px;
+    border-radius: 3px;
+    width: 40px;
+}
+.contenedor-item{
+    margin-left: 142px;
+}
+.cantidad-carrito{
+    width: 40px;
+    background-color: bisque;
+    border-radius: 5px;
+    border: 0.7px;
+}
+.total-compras{
+    display: inline-block;
+    margin-left: 305px;
+    margin-top: 30px;
+    width: 1010px;
+    margin-bottom: 300px;
+}
+.content-3{
+  border: 1px solid;
+  height: 20px;
+}
+.total-cuenta{
+    display: inline-block;
+    margin-top: 50px;
+    height: 25px;
+    width: 60px;
+    margin-left: 5px;
+    margin-top: 0px;
+
+}
+.precio-cuenta{
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 0px;
+    height: 25px;
+    width: 60px;
+
+}
+.comprar-cuenta{
+    margin-top: 0px;
+    display: inline-block;
+    margin-left: 785px;
+   
+}
+.comprar-button{
+    background-color: rgb(20, 255, 71);
+    border-color: rgb(20, 255, 71);
+    height: 40px;
+    border-radius: 3px;
+}
+#card-id{
+    font-size: 0.01px;
+}
+.div-eliminado{
+    height: 0px;
+    width: 0px;
+    float: none;
+}
+.div-ver-carrito{
+    margin-top: 40px ;
+   margin-left: 800px;
+}
+.button-ver-carrito{
+    border-color: rgb(63, 63, 243);
+    background-color: rgb(63, 63, 243);
+}
+.cuadro-modal{
+    width:40vw;
+    height: 40vh;
+    position: fixed;
+    margin-left:30vw ;
+    top: 20vh;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+.titulo-modal{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 110px;
+    margin-top:30px ;
+    color: brown;
+}
+.subtitulo-modal{
+    margin-left: 190px;
+    margin-top:30px ;
+}
+.image-despedida{
+    width: 20vw;
+    height: 20vh;
+    margin-left: 8.5vw;
+}
+.button-cerrar{
+    background-color: rgb(213, 24, 24);
+    border-color: rgb(213, 24, 24);
+    margin-left: 17vw;
+}
+#ver-carrito{
+    background-color: rgb(1, 166, 255);
+    border-color: rgb(1, 166, 255);
+    width: 8vw;
+    height: 6vh;
+}
+#text-l{
+    font-size: 0.8vw;
+    margin-top: 10%;
+}

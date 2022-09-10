@@ -4,11 +4,11 @@ const conexionDb = require('../../config/conexion');
 const cliente = require ('../Models/clienteModel.js');
 
 
-router.get("/crear",(req,res)=>{
+router.get('/crear',(req,res)=>{
     res.render("pages/formularios/formulario_cliente")
 })
 
-router.post("/crear",async (req,res)=>{
+router.post('/crear',async (req,res,next)=>{
         const body = req.body;
         const cedula = body.cedula;
         const nombre = body.nombre;
@@ -18,6 +18,7 @@ router.post("/crear",async (req,res)=>{
                            zoom: body.zoom};
         const totalComprado = parseInt(body.totalComprado);
         const historialCompras = Array(body.historialCompras);
+
         const clientedb = new cliente({cedula:cedula,
                                        nombre:nombre,
                                        telefono:telefono,
@@ -25,9 +26,8 @@ router.post("/crear",async (req,res)=>{
                                        totalComprado:totalComprado,
                                        historialCompras:historialCompras
                                     });
-        console.log(clientedb.ubicacion)
         await clientedb.save()
-        res.redirect("/cliente/listar");
+        next(res.redirect("/cliente/listar"));
 });
 router.get("/listar",async(req,res)=>{
     const obtenerCliente = await cliente.find()
@@ -42,7 +42,7 @@ router.get("/editar/:id",async(req,res)=>{
    res.render("pages/update/update_cliente",{cliente :clienteObjeto})
    
 })
-router.post("/editar",async (req,res)=>{
+router.post("/editar",async (req,res,next)=>{
     const body = req.body;
     const id = body.id
     const cedula = body.cedula;
@@ -63,13 +63,13 @@ router.post("/editar",async (req,res)=>{
         historialCompras:historialCompras}
     
     await cliente.updateOne({_id:id},{$set:clienteNuevo})
-    res.redirect("/cliente/listar");
+    next(res.redirect("/cliente/listar"));
 });
-router.get("/eliminar/:id",async(req,res)=>{
+router.get("/eliminar/:id",async(req,res,next)=>{
     const id = req.params.id
     console.log(id)
     await cliente.findByIdAndDelete({_id : id});
-   res.redirect("/cliente/listar")
+   next(res.redirect("/cliente/listar"));
    
 })
 
