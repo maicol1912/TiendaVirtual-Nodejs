@@ -1,0 +1,27 @@
+<%- include("../../partials/head.ejs") %>
+
+<form action="/usuario/editar" method="post">
+  <input type="hidden" name="id" value="<%=usuario._id%>">
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre</label>
+      <input type="text" class="form-control"  name="nombre"  value="<%=usuario.nombre%>">
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Usuario</label>
+      <input type="text" class="form-control" name="usuario"  value="<%=usuario.usuario%>">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Correo</label>
+        <input type="email" class="form-control" name="correo"  value="<%=usuario.correo%>">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="contraseña">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="/usuario/eliminar/<%=usuario._id%>" class="eliminar btn btn-danger">Eliminar</a>
+
+<%- include("../../partials/footer.ejs") %>

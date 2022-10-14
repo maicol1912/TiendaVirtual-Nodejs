@@ -4,12 +4,14 @@
   "description": "tienda virtual con nodeJs",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "maicol Arcila",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",

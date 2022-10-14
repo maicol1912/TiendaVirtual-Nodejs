@@ -29,10 +29,17 @@
     <div class="mb-3">
         <label for="" class="form-label">Historial Compras</label>
         <input type="text"  class="form-control"  name="historialCompras" value="<%=cliente.historialCompras%>">
+        <br>
+        <button class="btn btn-outline-success btn-sm">Cargar</button>
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="submit" class="btn btn-primary"></input>
 </form>
-<br>
+
     <a href="/cliente/eliminar/<%=cliente._id%>" class="eliminar btn btn-danger">Eliminar</a>
+    <script>
+        function saludar(){
+            alert("hola")
+        }
+    </script>
 <%- include("../../partials/footer.ejs") %>
