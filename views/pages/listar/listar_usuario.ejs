@@ -11,6 +11,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Correo</th>
+                <th scope="col">Rol</th>
                 <th scope="col">Contraseña</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                     <td><%=usuario.nombre %></td>
                     <td><%=usuario.usuario %></td>
                     <td><%=usuario.correo %></td>
+                    <td><%=usuario.rol %></td>
                     <td><%=usuario.contraseña %></td>
                     <td>
                         <a href="/usuario/editar/<%=usuario._id%>"  class="update btn btn-warning">Editar</a>

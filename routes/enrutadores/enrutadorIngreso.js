@@ -23,7 +23,13 @@ router.post("/iniciar-sesion",async(req,res)=>{
     const checkPassword  = await encript.compare(contraseña,user.contraseña)
 
     if(checkPassword){
-        res.redirect("/usuario/listar")
+        res.cookie("usuario",usuario);
+        res.cookie("rol",user.rol)
+        res.render("pages/ingreso/logueoUsuario",{
+                                                  "usuario":usuario,
+                                                  "rol": user.rol
+                                                }
+                                                )
     }
     if(!checkPassword){
         res.render("pages/ingreso/error")

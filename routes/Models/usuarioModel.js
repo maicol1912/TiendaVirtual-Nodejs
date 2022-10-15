@@ -5,6 +5,7 @@ const usuarioSchema = new schema({
     nombre:String,
     usuario :String,
     correo:String,
+    rol:String,
     contraseña : String,
 })
 

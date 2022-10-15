@@ -11,7 +11,7 @@ const enrutadorCliente = require("./routes/enrutadores/enrutadorCliente");
 const enrutadorIngreso = require("./routes/enrutadores/enrutadorIngreso");
 const enrutadorCarrito = require("./routes/enrutadores/enrutadorCarrito");
 const enrutadorUsuario = require("./routes/enrutadores/enrutadorUsuario");
-
+const cookieParser= require('cookie-parser');
 
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
@@ -27,7 +27,7 @@ app.use("/usuario",enrutadorUsuario)
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'))
 app.use(express.static("./public"))
-
+app.use(cookieParser)
 
 app.get("/",(req,res,next)=>{
     res.render("index.ejs")

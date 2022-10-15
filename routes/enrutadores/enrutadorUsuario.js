@@ -13,12 +13,14 @@ router.post('/crear',async (req,res,next)=>{
         const nombre = body.nombre;
         const usuario = body.usuario;
         const correo = body.correo;
+        const rol = body.rol;
         const contraseña = body.contraseña;
         const contraseñaHash = await encript.encrypt(contraseña) 
 
         const usuariodb = new usuariol({nombre:nombre,
                                        usuario:usuario,
                                        correo:correo,
+                                       rol:rol,
                                        contraseña:contraseñaHash
                                     });
         await usuariodb.save()
