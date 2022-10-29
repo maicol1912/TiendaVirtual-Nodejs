@@ -67,7 +67,6 @@ router.post("/editar",async (req,res,next)=>{
 });
 router.get("/eliminar/:id",async(req,res,next)=>{
     const id = req.params.id
-    console.log(id)
     await usuariol.findByIdAndDelete({_id : id});
    next(res.redirect("/usuario/listar"));
    
@@ -78,9 +77,9 @@ router.get("/mensaje/:correo",(req,res)=>{
         var transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth:{
-                user: 'maic09777.d@gmail.com',
-                pass: 'thgxasozgodtmgvb'
-    
+                user: process.env.USER_CORREO,
+                pass: process.env.CODE_CORREO
+                
             }
         });
         var mailOptions = {
@@ -104,11 +103,6 @@ router.get("/mensaje/:correo",(req,res)=>{
         res.redirect("/usuario/listar")
 })
 
-router.get("/env",(req,res)=>{
-    console.log(process.env.DB_NAME)
-    res.send("hola")
-
-})
 
 module.exports = router;
 
