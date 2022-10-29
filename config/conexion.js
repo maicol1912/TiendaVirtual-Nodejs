@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
+const NODE_ENV = process.env.NODE_ENV  || "development"
 
+require('dotenv').config({
+    path:`.env.${NODE_ENV}`
+})
 const user ="Maicol123"
 const password ="UH7FXQ36nMO2vwV3"
 const dbname = "tiendaPOS" 
-const url =`mongodb+srv://${user}:${password}@cluster0.vgcrq.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+const url =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.vgcrq.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const conexionParams = {
     useNewUrlParser:true,
     useUnifiedTopology:true

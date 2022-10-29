@@ -5,6 +5,11 @@ const usuariol = require ('../Models/usuarioModel.js');
 const encript = require ('../helper/encript.js');
 const mensaje = require('../helper/envioCorreo')
 const nodemailer = require('nodemailer')
+const NODE_ENV = process.env.NODE_ENV  || "development"
+
+require('dotenv').config({
+    path:`.env.${NODE_ENV}`
+})
 
 router.get('/crear',(req,res)=>{
     res.render("pages/formularios/formulario_usuario")
@@ -97,6 +102,12 @@ router.get("/mensaje/:correo",(req,res)=>{
             }
         })
         res.redirect("/usuario/listar")
+})
+
+router.get("/env",(req,res)=>{
+    console.log(process.env.DB_NAME)
+    res.send("hola")
+
 })
 
 module.exports = router;

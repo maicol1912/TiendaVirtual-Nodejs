@@ -12,6 +12,13 @@ const enrutadorIngreso = require("./routes/enrutadores/enrutadorIngreso");
 const enrutadorCarrito = require("./routes/enrutadores/enrutadorCarrito");
 const enrutadorUsuario = require("./routes/enrutadores/enrutadorUsuario");
 const mensaje = require("./routes/helper/envioCorreo");
+
+const NODE_ENV = process.env.NODE_ENV  || "desarrollo"
+
+require('dotenv').config({
+    path:`.env.${NODE_ENV}`
+})
+
 const cookieParser= require('cookie-parser');
 
 app.use(bodyparser.urlencoded({extended:false}))
@@ -42,6 +49,11 @@ app.get("/ingreso",enrutadorIngreso)
 app.get("/carrito",enrutadorCarrito)
 app.get("/usuario",enrutadorUsuario)
 app.get("/mensaje",mensaje)
+
+app.get("/env",(req,res)=>{
+    
+    res.send("hola")
+})
 
 app.listen(PORT,()=>{
     console.log("servidor Corriendo en el puerto: "+PORT)
