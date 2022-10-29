@@ -11,6 +11,7 @@ const enrutadorCliente = require("./routes/enrutadores/enrutadorCliente");
 const enrutadorIngreso = require("./routes/enrutadores/enrutadorIngreso");
 const enrutadorCarrito = require("./routes/enrutadores/enrutadorCarrito");
 const enrutadorUsuario = require("./routes/enrutadores/enrutadorUsuario");
+const mensaje = require("./routes/helper/envioCorreo");
 const cookieParser= require('cookie-parser');
 
 app.use(bodyparser.urlencoded({extended:false}))
@@ -23,6 +24,7 @@ app.use("/venta",enrutadorVenta)
 app.use("/ingreso",enrutadorIngreso)
 app.use("/carrito",enrutadorCarrito)
 app.use("/usuario",enrutadorUsuario)
+app.use("/usuario",mensaje)
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'))
@@ -39,6 +41,7 @@ app.get("/venta",enrutadorVenta);
 app.get("/ingreso",enrutadorIngreso)
 app.get("/carrito",enrutadorCarrito)
 app.get("/usuario",enrutadorUsuario)
+app.get("/mensaje",mensaje)
 
 app.listen(PORT,()=>{
     console.log("servidor Corriendo en el puerto: "+PORT)
