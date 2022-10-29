@@ -96,7 +96,7 @@ router.get("/mensaje/:correo",(req,res)=>{
                 res.send(500,err.message);
             }
             else {
-                console.log("Email Sent to : "+correoUsuario);
+                console.log("Email Sent to: "+correoUsuario);
                 res.status(200).jsonp(req.body)
     
             }
