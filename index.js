@@ -9,9 +9,7 @@ const enrutadorVendedor = require("./routes/enrutadores/enrutadorVendedor");
 const enrutadorVenta = require("./routes/enrutadores/enrutadorVenta");
 const enrutadorCliente = require("./routes/enrutadores/enrutadorCliente");
 const enrutadorIngreso = require("./routes/enrutadores/enrutadorIngreso");
-const enrutadorCarrito = require("./routes/enrutadores/enrutadorCarrito");
 const enrutadorUsuario = require("./routes/enrutadores/enrutadorUsuario");
-const mensaje = require("./routes/helper/envioCorreo");
 
 
 
@@ -25,9 +23,7 @@ app.use("/producto",enrutadorProducto);
 app.use("/vendedor",enrutadorVendedor);
 app.use("/venta",enrutadorVenta)
 app.use("/ingreso",enrutadorIngreso)
-app.use("/carrito",enrutadorCarrito)
 app.use("/usuario",enrutadorUsuario)
-app.use("/usuario",mensaje)
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'))
@@ -42,9 +38,7 @@ app.get("/producto",enrutadorProducto);
 app.get("/vendedor",enrutadorVendedor);
 app.get("/venta",enrutadorVenta);
 app.get("/ingreso",enrutadorIngreso)
-app.get("/carrito",enrutadorCarrito)
 app.get("/usuario",enrutadorUsuario)
-app.get("/mensaje",mensaje)
 
 
 app.listen(PORT,()=>{

@@ -3,7 +3,6 @@ const router = express.Router();
 const conexionDb = require('../../config/conexion');
 const usuariol = require ('../Models/usuarioModel.js');
 const encript = require ('../helper/encript.js');
-const mensaje = require('../helper/envioCorreo')
 const nodemailer = require('nodemailer')
 const NODE_ENV = process.env.NODE_ENV  || "development"
 
@@ -85,8 +84,10 @@ router.get("/mensaje/:correo",(req,res)=>{
         var mailOptions = {
             from : 'Remitente',
             to : correoUsuario,
-            subject: 'Asunto',
-            text: 'prueba instructor'
+            subject: 'Gracias por registrarte en salutApp ahora disfruta',
+            text: 'al registrarte con salutApp puedes acceder a todos los beneficios que ofrecemos' +
+                'para mejorar tu estilo de vida y tu salud empieza a navegar por nuestra pagina web' +
+                'y descubre las marvillas de sentirte bien con tu cuerpo'
         }
         
         transporter.sendMail(mailOptions, function(error, info){
@@ -95,7 +96,7 @@ router.get("/mensaje/:correo",(req,res)=>{
                 res.send(500,err.message);
             }
             else {
-                console.log("Email Sent");
+                console.log("Email Sent to : "+correoUsuario);
                 res.status(200).jsonp(req.body)
     
             }
